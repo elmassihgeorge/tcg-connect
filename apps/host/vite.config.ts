@@ -4,9 +4,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react({
-    jsxRuntime: 'automatic'
-  })],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -19,14 +17,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
-    commonjsOptions: {
-      include: ['@tcgconnect/shared']
-    },
-    rollupOptions: {
-      external: (id) => {
-        return false; // Don't externalize anything
-      }
-    }
   },
   optimizeDeps: {
     include: ['@tcgconnect/shared']

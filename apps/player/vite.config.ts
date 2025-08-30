@@ -17,9 +17,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
-    commonjsOptions: {
-      include: ['@tcgconnect/shared']
-    }
   },
   optimizeDeps: {
     include: ['@tcgconnect/shared']

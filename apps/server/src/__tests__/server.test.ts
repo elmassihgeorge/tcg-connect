@@ -1,5 +1,4 @@
-import request from 'supertest';
-import { Server } from 'http';
+
 
 // We'll need to refactor the server to be testable
 // For now, create a basic test structure

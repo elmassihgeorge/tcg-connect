@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Multi-device Pokemon TCG simulator",
   "private": true,
+  "type": "module",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -33,10 +34,11 @@
     "test:watch": "concurrently \"npm run test:shared -- --watch\" \"npm run test:server -- --watch\""
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
+    "concurrently": "^8.2.2",
     "eslint": "^9.33.0",
+    "globals": "^16.3.0",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3"
   }

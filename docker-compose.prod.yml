@@ -1,0 +1,72 @@
+# Docker Compose for TCGConnect production
+version: '3.8'
+
+services:
+  # Backend server
+  server:
+    build:
+      context: .
+      dockerfile: apps/server/Dockerfile
+      target: production
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - CLIENT_URL_HOST=https://your-host-domain.com
+      - CLIENT_URL_PLAYER=https://your-player-domain.com
+      - LOG_LEVEL=info
+    restart: unless-stopped
+    networks:
+      - tcgconnect
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Host display application
+  host:
+    build:
+      context: .
+      dockerfile: apps/host/Dockerfile
+      target: production
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - server
+    restart: unless-stopped
+    networks:
+      - tcgconnect
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Player mobile application
+  player:
+    build:
+      context: .
+      dockerfile: apps/player/Dockerfile
+      target: production
+    ports:
+      - "8081:80"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - server
+    restart: unless-stopped
+    networks:
+      - tcgconnect
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  tcgconnect:
+    driver: bridge

@@ -36,7 +36,12 @@ jobs:
       run: npm run typecheck
     
     - name: Run tests
-      run: npm run test
+      run: |
+        echo "Running tests..."
+        npm run test:shared
+        echo "Shared tests completed"
+        npm run test:server
+        echo "Server tests completed"
     
     - name: Build all packages
       run: npm run build

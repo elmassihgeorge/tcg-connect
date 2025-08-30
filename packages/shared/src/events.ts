@@ -12,7 +12,7 @@ export interface ClientToServerEvents {
   'player:left': () => void;
   
   // Game events
-  'action:performed': (data: { type: string; payload: any }) => void;
+  'action:performed': (data: { type: string; payload: unknown }) => void;
   'turn:ended': () => void;
 }
 

@@ -22,7 +22,7 @@ export interface GameAction {
   id: string;
   playerId: string;
   type: string;
-  payload: any;
+  payload: unknown;
   timestamp: Date;
 }
 

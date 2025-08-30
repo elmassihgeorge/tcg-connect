@@ -1,11 +1,11 @@
 import { Server as SocketIOServer, Socket } from 'socket.io';
-import {
+import type {
   ClientToServerEvents,
   ServerToClientEvents,
   InterServerEvents,
   SocketData,
-  logger
 } from '@tcgconnect/shared';
+import { logger } from '@tcgconnect/shared';
 import { GameManager } from '../game/GameManager';
 
 export type TypedSocket = Socket<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>;

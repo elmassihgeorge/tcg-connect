@@ -131,7 +131,7 @@ export const useSocket = (options: UseSocketOptions = {}) => {
     socketRef.current.emit('player:left');
   };
 
-  const performAction = (type: string, payload: any) => {
+  const performAction = (type: string, payload: unknown) => {
     if (!socketRef.current?.connected) {
       setState(prev => ({ ...prev, error: 'Not connected to server' }));
       return;

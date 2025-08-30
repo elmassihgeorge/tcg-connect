@@ -1,9 +1,11 @@
 import { Server as SocketIOServer, Socket } from 'socket.io';
-import {
+import type {
   GameState,
   Player,
   GameRoom,
   GameConfig,
+} from '@tcgconnect/shared';
+import {
   generateId,
   isValidPlayerRole,
   isValidPlayerName,

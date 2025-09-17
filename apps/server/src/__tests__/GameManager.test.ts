@@ -1,6 +1,6 @@
 import { GameManager } from '../game/GameManager';
 import { Server as SocketIOServer } from 'socket.io';
-import { createServer } from 'http';
+// GameManager tests
 import type { Socket } from 'socket.io';
 
 // Mock socket implementation
@@ -311,7 +311,7 @@ describe('GameManager', () => {
   describe('monitoring methods', () => {
     it('should return correct active games count', async () => {
       const gameId1 = gameManager.createGame();
-      const gameId2 = gameManager.createGame();
+      gameManager.createGame(); // Second game
       
       // No active games initially
       expect(gameManager.getActiveGamesCount()).toBe(0);

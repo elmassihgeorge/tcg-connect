@@ -1,7 +1,5 @@
 
-import { GameManager } from '../game/GameManager';
-import { Server as SocketIOServer } from 'socket.io';
-import { createServer } from 'http';
+// Basic server tests - detailed tests in other files
 
 describe('Server', () => {
   describe('Health Check', () => {

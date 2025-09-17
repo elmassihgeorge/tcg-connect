@@ -60,7 +60,7 @@ describe('useSocket Hook', () => {
   });
 
   it('should set up event listeners on connect', () => {
-    const { result } = renderHook(() => useSocket({
+    renderHook(() => useSocket({
       gameId: 'GAME123',
       playerName: 'Test Host',
       role: 'host',
